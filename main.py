@@ -8,7 +8,7 @@ def main():
     # Create some properties
     property1 = Property("Block 605 Bishan #06-098", 133456, "Freehold", 2004, "Residence", "Bishan", 22000000,0.015)
     property2 = Comm_Property("Building A #09-456 Paya Lebar Square", 654321, "Leasehold", 2015, "Commercial", "Office",
-                              "Downtown", 14000000,0.01)
+                              "Downtown", 15900000,0.01)
     property3 = Property("61 Choa Chu Kang Loop Northvale Block 71B #01-11", 689673, "Leasehold", 2012, "Apartment", "Choa Chu Kang",
                               14000000, 0.01)
     property4 = Property("2 Tanjong Pagar Plaza", 169119, "Leasehold", 1976, "HDB Flat", "Tanjong Pagar",
@@ -137,7 +137,7 @@ def main():
     "Downtown Core", 15000000, 0.015)
 
     # Create directors
-    director1 = Prop_Agency_Director("Real Estate Co", "D44556", 2015)
+    director1 = Prop_Agency_Director("Real Estate Co", "Director-D44556", 2015, 0.12,0.9)
     # Add Director Properties
     director1.add_sold_property(property49)
     director1.add_sold_property(property50)
@@ -148,7 +148,7 @@ def main():
     director1.add_unsold_property(property55)
     director1.add_unsold_property(property56)
 
-    director2 = Prop_Agency_Director("Property Guru Co", "E77889", 2016)
+    director2 = Prop_Agency_Director("Property Guru Co", "Director-E77889", 2016, 0.07, 0.8)
     director2.add_sold_property(property57)
     director2.add_sold_property(property58)
     director2.add_sold_property(property59)
@@ -159,7 +159,7 @@ def main():
     director2.add_unsold_property(property64)
 
     # Create agents
-    agent1 = Prop_Agent("Real Estate Co", "A12345", 2018,director1)
+    agent1 = Prop_Agent("Real Estate Co", "Agent-12345", 2018)
     agent1.add_sold_property(property1)
     agent1.add_sold_property(property2)
     agent1.add_sold_property(property3)
@@ -173,10 +173,11 @@ def main():
     print("Before Selling")
     agent1.print_unsold_properties()
     agent1.sell_property(property4)
+
     print("\nAfter Selling")
     agent1.print_unsold_properties()
 
-    agent2 = Prop_Agent("Real Estate Co", "B67890", 2019, director1)
+    agent2 = Prop_Agent("Real Estate Co", "Agent-B67890", 2019)
     agent2.add_sold_property(property9)
     agent2.add_sold_property(property10)
     agent2.add_sold_property(property11)
@@ -186,7 +187,15 @@ def main():
     agent2.add_unsold_property(property15)
     agent2.add_unsold_property(property16)
 
-    agent3 = Prop_Agent("Real Estate Co", "C11223", 2020, director1)
+    # Sell properties
+    print("\nBefore Selling")
+    agent2.print_unsold_properties()
+    agent2.sell_property(property16)
+
+    print("\nAfter Selling")
+    agent2.print_unsold_properties()
+
+    agent3 = Prop_Agent("Real Estate Co", "Agent-C11223", 2020, 0.75)
     agent3.add_sold_property(property17)
     agent3.add_sold_property(property18)
     agent3.add_sold_property(property19)
@@ -196,7 +205,7 @@ def main():
     agent3.add_unsold_property(property23)
     agent3.add_unsold_property(property24)
 
-    agent4 = Prop_Agent("Property Guru Co", "A23456", 2018, director2)
+    agent4 = Prop_Agent("Property Guru Co", "Agent-A23456", 2018)
     agent4.add_sold_property(property25)
     agent4.add_sold_property(property26)
     agent4.add_sold_property(property27)
@@ -206,7 +215,7 @@ def main():
     agent4.add_unsold_property(property31)
     agent4.add_unsold_property(property32)
 
-    agent5 = Prop_Agent("Property Guru Co", "B78901", 2019, director2)
+    agent5 = Prop_Agent("Property Guru Co", "Agent-B78901", 2019)
     agent5.add_sold_property(property33)
     agent5.add_sold_property(property34)
     agent5.add_sold_property(property35)
@@ -216,7 +225,7 @@ def main():
     agent5.add_unsold_property(property39)
     agent5.add_unsold_property(property40)
 
-    agent6 = Prop_Agent("Property Guru Co", "C22334", 2020, director2)
+    agent6 = Prop_Agent("Property Guru Co", "Agent-C22334", 2020)
     agent6.add_sold_property(property41)
     agent6.add_sold_property(property42)
     agent6.add_sold_property(property43)

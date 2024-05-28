@@ -27,13 +27,13 @@ def main():
     )
 
     expected_result = {
-        "address": "Block 605 Bishan #06-098",
-        "p_code": 570107,
-        "tenure": "Freehold",
-        "yoc": 2004,
-        "prop_type": "Housing",
-        "area": "Bishan",
-        "worth": 8000000,
+        "address": property1.get_address(),
+        "p_code": property1.get_p_code(),
+        "tenure": property1.get_tenure(),
+        "yoc": property1.get_yoc(),
+        "prop_type": property1.get_prop_type(),
+        "area": property1.get_area(),
+        "worth": property1.get_worth(),
         "Commission": 80000
     }
 

@@ -1,13 +1,13 @@
 
+
 class Prop_Agent:
-    def __init__(self, company, aid, start_year, director, cs_rate=0.7):
+    def __init__(self, company, aid, start_year, cs_rate=0.7):
         self._unsold_properties = []
         self._sold_properties = []
         self._cs_rate = cs_rate      # Commission Sharing Rate
         self._company = company
         self._aid = aid              # Agent Registration Number
         self._start_year = start_year
-        self._director = director
 
     def add_unsold_property(self, property):
         self._unsold_properties.append(property)
@@ -19,19 +19,26 @@ class Prop_Agent:
         if property in self._unsold_properties:
             self._unsold_properties.remove(property)
             self._sold_properties.append(property)
+            print(f"\n[SUCCESS] {self._aid} sold {property.get_address()}")
         else:
             print("Property not found in unsold properties list.")
 
     def print_unsold_properties(self):
         print(f"Unsold Properties for Agent {self._aid}:")
         for property in self._unsold_properties:
-            print(property._address)
+            print(f"- {property.get_address()}")
 
     def get_company(self):
         return self._company
 
     def set_company(self, company):
         self._company = company
+
+    def get_sold_properties(self):
+        return self._sold_properties
+
+    def get_unsold_properties(self):
+        return self._unsold_properties
 
     def get_aid(self):
         return self._aid
@@ -51,9 +58,6 @@ class Prop_Agent:
     def set_cs_rate(self, cs_rate):
         self._cs_rate = cs_rate
 
-    def get_director(self):
-        return self._director
-
     def __str__(self):
         return (
             f"\n>--- AGENT INFO ---<\n"
@@ -61,6 +65,8 @@ class Prop_Agent:
             f"ID: {self._aid}\n"
             f"Employment Year: {self._start_year}\n"
             f"Commission Rate: {self._cs_rate}\n"
+            f"Sold Properties: {self._sold_properties}\n"
+            f"Unsold Properties: {self._unsold_properties}\n"
         )
 
     def test(self, expect_result):
@@ -72,5 +78,9 @@ class Prop_Agent:
             raise ValueError("ERROR: Employment Year not match: ", self._start_year, expect_result["start_year"])
         elif self._cs_rate != expect_result["cs_rate"]:
             raise ValueError("ERROR: Commission Sharing Rate not match: ", self._cs_rate, expect_result["cs_rate"])
+        elif self._sold_properties != expect_result["sold"]:
+            raise ValueError("ERROR: Sold Properties not match: ", self._sold_properties, expect_result["sold"])
+        elif self._unsold_properties != expect_result["unsold"]:
+            raise ValueError("ERROR: Unsold Properties not match: ", self._unsold_properties, expect_result["unsold"])
         else:
             print("Test Passed")
